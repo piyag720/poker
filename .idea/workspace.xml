@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="06c7b922-b9f2-4ded-ade8-3bc32c7f6a22" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cblproject/Startup.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cblproject/Startup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cblproject/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cblproject/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cblproject/tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cblproject/tester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cblproject/tester.form" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cblproject/tester.form" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;piyag720&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/piyag720/poker&quot;,
+    &quot;accountId&quot;: &quot;613ba3b6-8fb0-4c19-9522-b975ac58ab93&quot;
+  }
+}</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="3.12422856948188E-7" />
+      <entry key="MS500" value="0.053729081991040914" />
+      <entry key="S2" value="0.7200220477337468" />
+      <entry key="S5" value="1.3145640383975816" />
+      <entry key="S10" value="1.6723870873083873" />
+      <entry key="S30" value="2.651189396371141" />
+      <entry key="S60" value="3.8523018121721986" />
+      <entry key="M2" value="5.341422137168049" />
+      <entry key="M5" value="7.080919049353052" />
+      <entry key="M10" value="7.935974058354918" />
+      <entry key="M15" value="8.264593844040919" />
+      <entry key="M30" value="8.618469139418291" />
+      <entry key="H1" value="8.805618097398701" />
+      <entry key="H2" value="8.901884108077043" />
+      <entry key="H4" value="8.950708158787853" />
+      <entry key="D1" value="8.991751979183386" />
+      <entry key="W1" value="8.998820907155956" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000000007" />
+      <entry key="S5" value="1.0000011846743921" />
+      <entry key="S10" value="1.0015019253328954" />
+      <entry key="S30" value="1.1827403126477887" />
+      <entry key="S60" value="1.6454008404206066" />
+      <entry key="M2" value="2.307138363085039" />
+      <entry key="M5" value="3.109076651747958" />
+      <entry key="M10" value="3.505945162980562" />
+      <entry key="M15" value="3.658553981791022" />
+      <entry key="M30" value="3.822879861772654" />
+      <entry key="H1" value="3.9097691818567917" />
+      <entry key="H2" value="3.954457587471112" />
+      <entry key="H4" value="3.9771208535034135" />
+      <entry key="D1" value="3.996171715091252" />
+      <entry key="W1" value="3.99945273117144" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.4455043474866039E-6" />
+      <entry key="MS500" value="0.07408284486877037" />
+      <entry key="S2" value="0.9497232852741191" />
+      <entry key="S5" value="1.8492840059048137" />
+      <entry key="S10" value="2.3996111681206984" />
+      <entry key="S30" value="3.716155293238648" />
+      <entry key="S60" value="5.416649161004159" />
+      <entry key="M2" value="7.588724762525005" />
+      <entry key="M5" value="10.154806074492145" />
+      <entry key="M10" value="11.421264086838606" />
+      <entry key="M15" value="11.908567746239767" />
+      <entry key="M30" value="12.433615822462205" />
+      <entry key="H1" value="12.711402143518828" />
+      <entry key="H2" value="12.854318463670017" />
+      <entry key="H4" value="12.926809598171987" />
+      <entry key="D1" value="12.987752697443298" />
+      <entry key="W1" value="12.998249183255245" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3KNVw26ZTE6p2PP6xDdPZ1c0zf5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Startup.executor": "Run",
+    "Application.tester.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "255",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/piyus/OneDrive/Desktop/Year1/Q1/GUI/poker",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "project.propGUI"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="06c7b922-b9f2-4ded-ade8-3bc32c7f6a22" name="Changes" comment="" />
+      <created>1791398249282</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791398249282</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -128,6 +128,7 @@ public class tester extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         secondscreen second = new secondscreen();
         second.setVisible(true);
+        second.setLocationRelativeTo(null);
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -159,7 +160,12 @@ public class tester extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new tester().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+        tester frame = new tester();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

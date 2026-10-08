@@ -9,5 +9,17 @@ package cblproject;
  * @author TB
  */
 public class Player {
-    
+    String playerName = null;
+    int money = 0;
+    int cardOne = null;
+    int cardTwo = null;
+
+    Public PlayerDrawCards() {
+        this.cardOne = PokerGame.drawnCard;
+        this.cardTwo = PokerGame.drawnCard;
+    }
+
+    Public SetPlayerMoney(int money) {
+        this.money = money;
+    }
 }

@@ -21,6 +21,8 @@ public class PokerGame {
     int cardTurn = null;
     int cardRiver = null;
 
+    int roundcounter = 0;
+
     public int HandValue(int cardOne, int cardTwo) {
 
     }
@@ -65,5 +67,17 @@ public class PokerGame {
         this.cardFlopOne = DrawCard();
         this.cardFlopTwo = DrawCard();
         this.cardFlopThree = DrawCard();
+        
+        roundcounter = 1;
+    }
+
+    public ResetGame() {
+        potMoney = 0;
+        cardFlopOne = null;
+        cardFlopTwo = null;
+        cardFlopThree = null;
+        cardTurn = null;
+        cardRiver = null;
+        roundcounter += 1;
     }
 }

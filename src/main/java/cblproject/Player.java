@@ -13,6 +13,7 @@ public class Player {
     int money = 0;
     int cardOne = null;
     int cardTwo = null;
+    int[] cards;
 
     public PlayerDrawCards() {
         this.cardOne = PokerGame.drawnCard;
@@ -30,5 +31,12 @@ public class Player {
             this.money -= money;
             return 0;
         }
+    }
+
+    public int[] ShowCards() {
+        cards = new int[2];
+        cards[0] = this.cardOne;
+        cards[1] = this.cardTwo;
+        return cards;
     }
 }

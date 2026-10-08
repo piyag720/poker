@@ -14,12 +14,21 @@ public class Player {
     int cardOne = null;
     int cardTwo = null;
 
-    Public PlayerDrawCards() {
+    public PlayerDrawCards() {
         this.cardOne = PokerGame.drawnCard;
         this.cardTwo = PokerGame.drawnCard;
     }
 
-    Public SetPlayerMoney(int money) {
+    public SetPlayerMoney(int money) {
         this.money = money;
+    }
+
+    public int ChangePlayerMoney(int money){
+        if(this.money = money < 0) {
+            return 1;
+        } else {
+            this.money -= money;
+            return 0;
+        }
     }
 }

@@ -20,16 +20,31 @@ public class PokerGame {
     int cardFlopThree = null;
     int cardTurn = null;
     int cardRiver = null;
-    
+
     public int HandValue(int cardOne, int cardTwo) {
 
+    }
+
+    public int PlayerBet(Player player, int money) {
+        int error = player.SetPlayerMoney(money);
+        if (error == 0) {
+            this.potMoney += money;
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    public WinningPlayer(Player player) {
+        player.ChangePlayerMoney(-potMoney);
+        this.potMoney = 0;
     }
 
     public int DrawCard() {
         randomGenerator = new Random(Math.random());
         int drawnCard = 0;
         int randomNumber;
-        while(drawnCard == 0) {
+        while (drawnCard == 0) {
             randomNumber = randomGenerator.nextInt(52);
             drawnCard = deckOfCards[randomNumber];
             deckOfCards[randomNumber] = 0;
@@ -37,7 +52,7 @@ public class PokerGame {
         return drawnCard;
     }
 
-    public int StartGame(int amountOfPlayers, int moneyPerPlayer) {
+    public StartGame(int amountOfPlayers, int moneyPerPlayer) {
         for(int i; i < deckOfCards.length; i++) {
             deckOfCards[i] = i + 1;
         }

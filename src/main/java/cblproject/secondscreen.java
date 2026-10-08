@@ -17,6 +17,7 @@ public class secondscreen extends javax.swing.JFrame {
      */
     public secondscreen() {
         initComponents();
+        jPanel2.setVisible(false);
     }
 
     /**

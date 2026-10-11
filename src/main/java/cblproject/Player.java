@@ -11,21 +11,21 @@ package cblproject;
 public class Player {
     String playerName = null;
     int money = 0;
-    int cardOne = null;
-    int cardTwo = null;
+    int cardOne = 0;
+    int cardTwo = 0;
     int[] cards;
 
-    public PlayerDrawCards() {
-        this.cardOne = PokerGame.drawnCard;
-        this.cardTwo = PokerGame.drawnCard;
+    public void PlayerDrawCards(int cardOne, int cardTwo) {
+        this.cardOne = cardOne;
+        this.cardTwo = cardTwo;
     }
 
-    public SetPlayerMoney(int money) {
+    public void SetPlayerMoney(int money) {
         this.money = money;
     }
 
     public int ChangePlayerMoney(int money){
-        if(this.money = money < 0) {
+        if(this.money - money < 0) {
             return 1;
         } else {
             this.money -= money;

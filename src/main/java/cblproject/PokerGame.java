@@ -40,7 +40,7 @@ public class PokerGame {
         this.cardFlopTwo = DrawCard();
         this.cardFlopThree = DrawCard();
         
-        roundcounter = 1;
+        this.roundcounter = 1;
     }
 
     public void HandValue(int cardOne, int cardTwo) {
@@ -60,12 +60,17 @@ public class PokerGame {
     public void WinningPlayer(Player player) {
         player.ChangePlayerMoney(-potMoney);
         this.potMoney = 0;
+        this.cardFlopOne = 0;
+        this.cardFlopTwo = 0;
+        this.cardFlopThree = 0;
+        this.cardTurn = 0;
+        this.cardRiver = 0;
+        this.roundcounter += 1;
     }
 
     public int DrawCard() {
         Random randomGenerator;
-        long seed = 102;
-        randomGenerator = new Random(seed /* Math.random() */ );
+        randomGenerator = new Random();
         int drawnCard = 0;
         int randomNumber;
         while (drawnCard == 0) {
@@ -80,15 +85,5 @@ public class PokerGame {
         int[] cards = new int[2];
         cards = players[player - 1].ShowCards();
         return cards;
-    }
-
-    public void ResetGame() {
-        potMoney = 0;
-        cardFlopOne = 0;
-        cardFlopTwo = 0;
-        cardFlopThree = 0;
-        cardTurn = 0;
-        cardRiver = 0;
-        roundcounter += 1;
     }
 }

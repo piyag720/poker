@@ -30,25 +30,25 @@ public class PokerGame {
         }
         players = new Player[amountOfPlayers];
         for(int i = 0; i < players.length; i++) {
-            int cardOne = DrawCard();
-            int cardTwo = DrawCard();
+            int cardOne = drawCard();
+            int cardTwo = drawCard();
             players[i] = new Player();
-            players[i].PlayerDrawCards(cardOne, cardTwo);
-            players[i].SetPlayerMoney(moneyPerPlayer);
+            players[i].playerDrawCards(cardOne, cardTwo);
+            players[i].setPlayerMoney(moneyPerPlayer);
         }
-        this.cardFlopOne = DrawCard();
-        this.cardFlopTwo = DrawCard();
-        this.cardFlopThree = DrawCard();
+        this.cardFlopOne = drawCard();
+        this.cardFlopTwo = drawCard();
+        this.cardFlopThree = drawCard();
         
         this.roundcounter = 1;
     }
 
-    public void HandValue(int cardOne, int cardTwo) {
+    public void handValue(int cardOne, int cardTwo) {
 
     }
 
-    public int PlayerBet(Player player, int money) {
-        int error = player.ChangePlayerMoney(money);
+    public int playerBet(Player player, int money) {
+        int error = player.ChangePlayerMoney(-money);
         if (error == 0) {
             this.potMoney += money;
             return 0;
@@ -57,18 +57,21 @@ public class PokerGame {
         }
     }
 
-    public void WinningPlayer(Player player) {
-        player.ChangePlayerMoney(-potMoney);
+    public void winningPlayer(Player player) {
+        player.changePlayerMoney(this.potMoney);
         this.potMoney = 0;
         this.cardFlopOne = 0;
         this.cardFlopTwo = 0;
         this.cardFlopThree = 0;
         this.cardTurn = 0;
         this.cardRiver = 0;
+        for(int i = 0; i < deckOfCards.length; i++) {
+            deckOfCards[i] = i + 1;
+        }
         this.roundcounter += 1;
     }
 
-    public int DrawCard() {
+    public int drawCard() {
         Random randomGenerator;
         randomGenerator = new Random();
         int drawnCard = 0;
@@ -81,9 +84,9 @@ public class PokerGame {
         return drawnCard;
     }
 
-    public int[] ShowCards(int player) {
+    public int[] showCards(int player) {
         int[] cards = new int[2];
-        cards = players[player - 1].ShowCards();
+        cards = players[player].showCards();
         return cards;
     }
 }

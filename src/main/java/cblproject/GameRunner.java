@@ -4,15 +4,25 @@ public class GameRunner {
     public static void main(String[] args) {
         int amountOfPlayers = 2;
         int moneyPerPlayer = 100;
-        int[] playerOneCards = new int[2];
-        int[] playerTwoCards = new int[2];
+        int[][] playerCards = new int[amountOfPlayers][2];
+
 
         PokerGame theGame = new PokerGame(amountOfPlayers, moneyPerPlayer);
 
-        playerOneCards = theGame.ShowCards(1);
-        playerTwoCards = theGame.ShowCards(2);
+        for (int i = 0; i < playerCards.length; i++) {
+            playerCards[i] = theGame.showCards(i);
+            System.out.println(playerCards[i][0]);
+            System.out.println(playerCards[i][1]);
+        }
 
-        System.out.println("got there");
+        int[] playerBetAmount = new int[amountOfPlayers];
+        int highetsBettingPlayer = 0;
+        int betTurn = 0;
+        while (betTurn < amountOfPlayers) {
+            
+            
+            betTurn += 1;
+        }
 
     }
     

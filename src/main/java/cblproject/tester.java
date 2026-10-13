@@ -28,6 +28,13 @@ public class tester extends javax.swing.JFrame {
         card2.setVisible(false);
         card3.setVisible(false);
         card4.setVisible(false);
+
+        Raise1money.setVisible(false);
+        fold1.setVisible(false);
+        raise1.setVisible(false);
+        call1.setVisible(false);
+        show_hidecards1.setVisible(false);
+        show_hidecards2.setVisible(false);
         
         card1.setText("");
         card2.setText("");
@@ -391,6 +398,19 @@ public class tester extends javax.swing.JFrame {
             flopcard1.setText(cards.numtoCard(new int[]{table[0]}));
             flopcard2.setText(cards.numtoCard(new int[]{table[1]}));
             flopcard3.setText(cards.numtoCard(new int[]{table[2]}));
+            Raise1money.setVisible(true);
+            raise1.setVisible(true);
+            call1.setVisible(true);
+            fold1.setVisible(true);
+            show_hidecards1.setVisible(true);
+            show_hidecards2.setVisible(true);
+
+            deal.setVisible(false);
+
+
+            game.playerBet(game.players[0], 5);
+            game.playerBet(game.players[1], 5);
+            updateMoneyLabels();
         } else if (stage == 1) {
             game.drawTurn();
             turncard.setText(cards.numtoCard(new int[]{game.showTable()[3]}));

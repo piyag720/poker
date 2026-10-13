@@ -86,4 +86,22 @@ public class PokerGame {
         cards = players[player - 1].ShowCards();
         return cards;
     }
+    
+    public void DrawTurn() {
+        this.cardTurn = DrawCard();
+    }
+
+    public void DrawRiver() {
+        this.cardRiver = DrawCard();
+    }
+
+    public int[] ShowTable() {
+        int[] table = new int[5];
+        table[0] = this.cardFlopOne;
+        table[1] = this.cardFlopTwo;
+        table[2] = this.cardFlopThree;
+        table[3] = this.cardTurn;
+        table[4] = this.cardRiver;
+        return table;
+    }
 }

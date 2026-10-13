@@ -11,12 +11,36 @@ package cblproject;
 public class tester extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(tester.class.getName());
+    
+    private PokerGame game = new PokerGame(2, 100);
+    private Cards cards = new Cards();
+    private int stage = 0;
 
     /**
      * Creates new form tester
      */
+    
+    
     public tester() {
         initComponents();
+        
+        card1.setVisible(false);
+        card2.setVisible(false);
+        card3.setVisible(false);
+        card4.setVisible(false);
+        
+        card1.setText("");
+        card2.setText("");
+        card3.setText("");
+        card4.setText("");
+        flopcard1.setText("");
+        flopcard2.setText("");
+        flopcard3.setText("");
+        turncard.setText("");
+        rivercard.setText("");
+        updateMoneyLabels();
+        raise1.addActionListener(evt -> raiseMoney(0, Raise1money));
+        raise2.addActionListener(evt -> raiseMoney(1, raisemoney2));
     }
 
     /**
@@ -31,55 +55,118 @@ public class tester extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        show_hidecards1 = new javax.swing.JButton();
+        call1 = new javax.swing.JButton();
+        raise1 = new javax.swing.JButton();
+        fold1 = new javax.swing.JButton();
+        show_hidecards2 = new javax.swing.JButton();
+        raise2 = new javax.swing.JButton();
+        call2 = new javax.swing.JButton();
+        fold2 = new javax.swing.JButton();
+        quit = new javax.swing.JButton();
+        Raise1money = new javax.swing.JTextField();
+        raisemoney2 = new javax.swing.JTextField();
+        player1 = new javax.swing.JLabel();
+        player2 = new javax.swing.JLabel();
+        player1table = new javax.swing.JPanel();
+        card1 = new javax.swing.JLabel();
+        card2 = new javax.swing.JLabel();
+        player2table = new javax.swing.JPanel();
+        card3 = new javax.swing.JLabel();
+        card4 = new javax.swing.JLabel();
+        player1Money = new javax.swing.JLabel();
+        player2Money = new javax.swing.JLabel();
+        tablePanel = new javax.swing.JPanel();
+        flopcard1 = new javax.swing.JLabel();
+        flopcard2 = new javax.swing.JLabel();
+        flopcard3 = new javax.swing.JLabel();
+        turncard = new javax.swing.JLabel();
+        rivercard = new javax.swing.JLabel();
+        deal = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        potMoney = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setBackground(new java.awt.Color(0, 153, 153));
         jTextField1.setForeground(new java.awt.Color(255, 51, 0));
-        jTextField1.setText("POKER");
+        jTextField1.setText("        POKER");
         jTextField1.setFocusable(false);
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         jButton9.setText("Screen 2 test");
         jButton9.addActionListener(this::jButton9ActionPerformed);
 
-        jButton10.setText("Show/Hide Cards");
-        jButton10.addActionListener(this::jButton10ActionPerformed);
+        show_hidecards1.setText("Show/Hide Cards");
+        show_hidecards1.addActionListener(this::show_hidecards1ActionPerformed);
 
-        jButton3.setText("Call");
+        call1.setText("Call");
 
-        jButton2.setText("Raise");
+        raise1.setText("Raise");
 
-        jButton4.setText("Fold");
+        fold1.setText("Fold");
+        fold1.addActionListener(this::fold1ActionPerformed);
 
-        jButton5.setText("Show/hide Cards");
+        show_hidecards2.setText("Show/hide Cards");
+        show_hidecards2.addActionListener(this::show_hidecards2ActionPerformed);
 
-        jButton6.setText("Raise");
+        raise2.setText("Raise");
 
-        jButton7.setText("Call");
+        call2.setText("Call");
 
-        jButton8.setText("Fold");
+        fold2.setText("Fold");
 
-        jButton1.setText("quit");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        quit.setText("quit");
+        quit.addActionListener(this::quitActionPerformed);
 
-        jTextField2.setText("Input Money");
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        Raise1money.setText("Input Money");
+        Raise1money.addActionListener(this::Raise1moneyActionPerformed);
 
-        jTextField3.setText("Input Money");
+        raisemoney2.setText("Input Money");
+
+        player1.setText("Player 1 Money:");
+
+        player2.setText("Player 2 Money:");
+
+        card1.setText("Card 1.1");
+        player1table.add(card1);
+
+        card2.setText("Card 1.2");
+        player1table.add(card2);
+
+        card3.setText("Card 2.1");
+        player2table.add(card3);
+
+        card4.setText("card2.2");
+        player2table.add(card4);
+
+        player1Money.setText("$");
+
+        player2Money.setText("$");
+
+        flopcard1.setText("cardTable1");
+        tablePanel.add(flopcard1);
+
+        flopcard2.setText("cardTable2");
+        tablePanel.add(flopcard2);
+
+        flopcard3.setText("cardTable3");
+        tablePanel.add(flopcard3);
+
+        turncard.setText("cardTable4");
+        tablePanel.add(turncard);
+
+        rivercard.setText("cardTable5");
+        tablePanel.add(rivercard);
+
+        deal.setText("DEAL");
+        deal.addActionListener(this::dealActionPerformed);
+
+        jLabel10.setText("POT:");
+
+        potMoney.setText("$");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,80 +175,141 @@ public class tester extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButton10)
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton2)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jButton7))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(raise1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(call1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(player1)))
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton8)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(fold1)
+                                    .addComponent(Raise1money, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(167, 167, 167)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(call2)
+                                    .addComponent(raise2))
+                                .addGap(82, 82, 82))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(player1Money, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(player2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(player2Money, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fold2)
+                            .addComponent(raisemoney2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jButton9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(309, 309, 309)
+                            .addComponent(quit)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(jButton9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addComponent(jButton1)))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(player1table, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(show_hidecards1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(deal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(potMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(show_hidecards2)
+                            .addComponent(player2table, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78)))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(tablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton9))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton9)
-                .addGap(54, 54, 54)
+                .addComponent(tablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(player2table, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(show_hidecards2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(player1table, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(deal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10)
+                                    .addComponent(potMoney))))
+                        .addGap(18, 18, 18)
+                        .addComponent(show_hidecards1)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(raise1)
+                            .addComponent(Raise1money, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(raise2)
+                            .addComponent(raisemoney2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                    .addComponent(call1)
+                    .addComponent(fold1)
+                    .addComponent(call2)
+                    .addComponent(fold2))
+                .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(58, 58, 58))
+                    .addComponent(player1)
+                    .addComponent(player2)
+                    .addComponent(player1Money)
+                    .addComponent(player2Money))
+                .addGap(2, 2, 2)
+                .addComponent(quit)
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -180,19 +328,101 @@ public class tester extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void quitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitActionPerformed
         System.exit(0);
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_quitActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void show_hidecards1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_hidecards1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+        
+        if(card1.isVisible() == true) {
+            
+        
+        card1.setVisible(false);
+        card2.setVisible(false);
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        
+        } else {
+             card1.setVisible(true);
+        card2.setVisible(true);
+        }
+    }//GEN-LAST:event_show_hidecards1ActionPerformed
+
+    private void Raise1moneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Raise1moneyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_Raise1moneyActionPerformed
 
+    private void show_hidecards2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_hidecards2ActionPerformed
+        // TODO add your handling code here:
+        if(card3.isVisible() == true) {
+            
+        
+        card3.setVisible(false);
+        card4.setVisible(false);
+
+        
+        } else {
+             card3.setVisible(true);
+        card4.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_show_hidecards2ActionPerformed
+
+    private void fold1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fold1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fold1ActionPerformed
+
+    private void dealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealActionPerformed
+        // TODO add your handling code here:
+                dealNextStage();
+    }//GEN-LAST:event_dealActionPerformed
+
+    
+     private void dealNextStage() {
+        if (stage == 0) {
+            int[] handOne = game.ShowCards(1);
+            int[] handTwo = game.ShowCards(2);
+            int[] table = game.ShowTable();
+            card1.setText(cards.NumtoCard(new int[]{handOne[0]}));
+            card2.setText(cards.NumtoCard(new int[]{handOne[1]}));
+            card3.setText(cards.NumtoCard(new int[]{handTwo[0]}));
+            card4.setText(cards.NumtoCard(new int[]{handTwo[1]}));
+            flopcard1.setText(cards.NumtoCard(new int[]{table[0]}));
+            flopcard2.setText(cards.NumtoCard(new int[]{table[1]}));
+            flopcard3.setText(cards.NumtoCard(new int[]{table[2]}));
+        } else if (stage == 1) {
+            game.DrawTurn();
+            turncard.setText(cards.NumtoCard(new int[]{game.ShowTable()[3]}));
+        } else if (stage == 2) {
+            game.DrawRiver();
+            rivercard.setText(cards.NumtoCard(new int[]{game.ShowTable()[4]}));
+        } else {
+            return;
+        }
+        stage++;
+    }
+
+    private void updateMoneyLabels() {
+        player1Money.setText("$" + game.players[0].money);
+        player2Money.setText("$" + game.players[1].money);
+        potMoney.setText("$" + game.potMoney);
+    }
+
+    private void raiseMoney(int playerIndex, javax.swing.JTextField field) {
+        int amount;
+        try {
+            amount = Integer.parseInt(field.getText().trim());
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "invalid input");
+            return;
+        }
+        if (amount <= 0 || game.PlayerBet(game.players[playerIndex], amount) != 0) {
+            javax.swing.JOptionPane.showMessageDialog(this, "invalid input");
+            return;
+        }
+        updateMoneyLabels();
+    }
     /**
      * @param args the command line arguments
      */
@@ -218,25 +448,44 @@ public class tester extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
         tester frame = new tester();
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame.setVisible(true); 
         });
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JTextField Raise1money;
+    private javax.swing.JButton call1;
+    private javax.swing.JButton call2;
+    private javax.swing.JLabel card1;
+    private javax.swing.JLabel card2;
+    private javax.swing.JLabel card3;
+    private javax.swing.JLabel card4;
+    private javax.swing.JButton deal;
+    private javax.swing.JLabel flopcard1;
+    private javax.swing.JLabel flopcard2;
+    private javax.swing.JLabel flopcard3;
+    private javax.swing.JButton fold1;
+    private javax.swing.JButton fold2;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel player1;
+    private javax.swing.JLabel player1Money;
+    private javax.swing.JPanel player1table;
+    private javax.swing.JLabel player2;
+    private javax.swing.JLabel player2Money;
+    private javax.swing.JPanel player2table;
+    private javax.swing.JLabel potMoney;
+    private javax.swing.JButton quit;
+    private javax.swing.JButton raise1;
+    private javax.swing.JButton raise2;
+    private javax.swing.JTextField raisemoney2;
+    private javax.swing.JLabel rivercard;
+    private javax.swing.JButton show_hidecards1;
+    private javax.swing.JButton show_hidecards2;
+    private javax.swing.JPanel tablePanel;
+    private javax.swing.JLabel turncard;
     // End of variables declaration//GEN-END:variables
 }

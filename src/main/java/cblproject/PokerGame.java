@@ -107,4 +107,10 @@ public class PokerGame {
         table[4] = this.cardRiver;
         return table;
     }
+
+    public void printCardDeck() {
+        for(int i = 0; i < deckOfCards.length; i++) {
+            System.out.println(deckOfCards[i]);
+        }
+    }
 }

@@ -381,22 +381,22 @@ public class tester extends javax.swing.JFrame {
     
      private void dealNextStage() {
         if (stage == 0) {
-            int[] handOne = game.ShowCards(1);
-            int[] handTwo = game.ShowCards(2);
-            int[] table = game.ShowTable();
-            card1.setText(cards.NumtoCard(new int[]{handOne[0]}));
-            card2.setText(cards.NumtoCard(new int[]{handOne[1]}));
-            card3.setText(cards.NumtoCard(new int[]{handTwo[0]}));
-            card4.setText(cards.NumtoCard(new int[]{handTwo[1]}));
-            flopcard1.setText(cards.NumtoCard(new int[]{table[0]}));
-            flopcard2.setText(cards.NumtoCard(new int[]{table[1]}));
-            flopcard3.setText(cards.NumtoCard(new int[]{table[2]}));
+            int[] handOne = game.showCards(0);
+            int[] handTwo = game.showCards(1);
+            int[] table = game.showTable();
+            card1.setText(cards.numtoCard(new int[]{handOne[0]}));
+            card2.setText(cards.numtoCard(new int[]{handOne[1]}));
+            card3.setText(cards.numtoCard(new int[]{handTwo[0]}));
+            card4.setText(cards.numtoCard(new int[]{handTwo[1]}));
+            flopcard1.setText(cards.numtoCard(new int[]{table[0]}));
+            flopcard2.setText(cards.numtoCard(new int[]{table[1]}));
+            flopcard3.setText(cards.numtoCard(new int[]{table[2]}));
         } else if (stage == 1) {
-            game.DrawTurn();
-            turncard.setText(cards.NumtoCard(new int[]{game.ShowTable()[3]}));
+            game.drawTurn();
+            turncard.setText(cards.numtoCard(new int[]{game.showTable()[3]}));
         } else if (stage == 2) {
-            game.DrawRiver();
-            rivercard.setText(cards.NumtoCard(new int[]{game.ShowTable()[4]}));
+            game.drawRiver();
+            rivercard.setText(cards.numtoCard(new int[]{game.showTable()[4]}));
         } else {
             return;
         }
@@ -417,7 +417,7 @@ public class tester extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "invalid input");
             return;
         }
-        if (amount <= 0 || game.PlayerBet(game.players[playerIndex], amount) != 0) {
+        if (amount <= 0 || game.playerBet(game.players[playerIndex], amount) != 0) {
             javax.swing.JOptionPane.showMessageDialog(this, "invalid input");
             return;
         }

@@ -48,7 +48,7 @@ public class PokerGame {
     }
 
     public int playerBet(Player player, int money) {
-        int error = player.ChangePlayerMoney(-money);
+        int error = player.changePlayerMoney(-money);
         if (error == 0) {
             this.potMoney += money;
             return 0;
@@ -90,15 +90,15 @@ public class PokerGame {
         return cards;
     }
     
-    public void DrawTurn() {
-        this.cardTurn = DrawCard();
+    public void drawTurn() {
+        this.cardTurn = drawCard();
     }
 
-    public void DrawRiver() {
-        this.cardRiver = DrawCard();
+    public void drawRiver() {
+        this.cardRiver = drawCard();
     }
 
-    public int[] ShowTable() {
+    public int[] showTable() {
         int[] table = new int[5];
         table[0] = this.cardFlopOne;
         table[1] = this.cardFlopTwo;

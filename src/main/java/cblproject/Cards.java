@@ -29,7 +29,7 @@ public class Cards {
         }
     }
  
-    public String NumtoCard(int[] a) {
+    public String numtoCard(int[] a) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < a.length; i++) {
             String card = cardList.get(a[i]);

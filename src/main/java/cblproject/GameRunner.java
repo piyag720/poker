@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import cblproject.PokerGame;
 
 public class GameRunner {
@@ -18,8 +20,11 @@ public class GameRunner {
         int[] playerBetAmount = new int[amountOfPlayers];
         int highetsBettingPlayer = 0;
         int betTurn = 0;
+
+        Scanner scanner = new Scanner(System.in);
         while (betTurn < amountOfPlayers) {
-            
+            int bet = scanner.nextInt();
+            if (bet + playerBetAmount[betTurn] == playerBetAmount[highetsBettingPlayer])
             
             betTurn += 1;
         }

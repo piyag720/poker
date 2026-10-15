@@ -498,8 +498,8 @@ public class tester extends javax.swing.JFrame {
 
             deal.setVisible(false);
 
-            game.playerBet(game.players[0], 5);
-            game.playerBet(game.players[1], 5);
+            game.playerBet(game.players[0], secondscreen.getBigBlindSetting());
+            game.playerBet(game.players[1], secondscreen.getBigBlindSetting());
             updateMoneyLabels();
         } else if (stage == 1) {
             game.drawTurn();

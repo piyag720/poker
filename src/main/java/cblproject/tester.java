@@ -402,6 +402,8 @@ public class tester extends javax.swing.JFrame {
             fold2.setVisible(false);
 
             deal.setVisible(true);
+
+            lastActionPerformed = -1;
         }
     }
 
@@ -435,6 +437,8 @@ public class tester extends javax.swing.JFrame {
             fold2.setVisible(false);
 
             deal.setVisible(true);
+
+            lastActionPerformed = -1;
         }
     }
 
@@ -561,9 +565,6 @@ public class tester extends javax.swing.JFrame {
             call2.setVisible(false);
             fold2.setVisible(false);
         }
-
-        System.out.println(lastRaise);
-        System.out.println(lastActionPerformed);
     }
     /**
      * @param args the command line arguments

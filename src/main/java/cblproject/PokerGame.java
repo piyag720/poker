@@ -43,6 +43,17 @@ public class PokerGame {
         this.roundcounter = 1;
     }
 
+    public void dealAgain() {
+        for(int i = 0; i < players.length; i++) {
+            int cardOne = drawCard();
+            int cardTwo = drawCard();
+            players[i].playerDrawCards(cardOne, cardTwo);
+        }
+        this.cardFlopOne = drawCard();
+        this.cardFlopTwo = drawCard();
+        this.cardFlopThree = drawCard();
+    }
+
     public void handValue(int cardOne, int cardTwo) {
 
     }

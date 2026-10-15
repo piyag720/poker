@@ -13,8 +13,9 @@ public class tester extends javax.swing.JFrame {
 
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(tester.class.getName());
+
     
-    private PokerGame game = new PokerGame(2, 100);
+    private PokerGame game = new PokerGame(2, secondscreen.getMoneySetting());
     private Cards cards = new Cards();
     private int stage = 0;
     private int lastActionPerformed = -1;
@@ -460,14 +461,14 @@ public class tester extends javax.swing.JFrame {
     }//GEN-LAST:event_show_hidecards2ActionPerformed
 
     private void fold1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fold1ActionPerformed
-        game.winningPlayer(game.players[1]);
-        updateMoneyLabels();
+        resetBoard(1);
+        javax.swing.JOptionPane.showMessageDialog(this, "Player 2 Wins!");
         // TODO add your handling code here:
     }//GEN-LAST:event_fold1ActionPerformed
 
     private void fold2ActionPerformed(java.awt.event.ActionEvent evt) {
-        game.winningPlayer(game.players[0]);
-        updateMoneyLabels();
+        resetBoard(0);
+        javax.swing.JOptionPane.showMessageDialog(this, "Player 1 Wins!");
     }
 
     private void dealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealActionPerformed
@@ -534,6 +535,46 @@ public class tester extends javax.swing.JFrame {
         player1Money.setText("$" + game.players[0].money);
         player2Money.setText("$" + game.players[1].money);
         potMoney.setText("$" + game.potMoney);
+    }
+
+    private void resetBoard(int winningPlayer) {
+        card1.setText("");
+        card2.setText("");
+        card3.setText("");
+        card4.setText("");
+        flopcard1.setText("");
+        flopcard2.setText("");
+        flopcard3.setText("");
+        turncard.setText("");
+        rivercard.setText("");
+
+        card1.setVisible(false);
+        card2.setVisible(false);
+        card3.setVisible(false);
+        card4.setVisible(false);
+
+        Raise1money.setVisible(false);
+        fold1.setVisible(false);
+        raise1.setVisible(false);
+        call1.setVisible(false);
+
+        raisemoney2.setVisible(false);
+        raise2.setVisible(false);
+        call2.setVisible(false);
+        fold2.setVisible(false);
+
+        show_hidecards1.setVisible(false);
+        show_hidecards2.setVisible(false);
+
+        deal.setVisible(true);
+
+        stage = 0;
+        lastActionPerformed = -1;
+        lastRaise = 0;
+
+        game.winningPlayer(game.players[winningPlayer]);
+        game.dealAgain();
+        updateMoneyLabels();
     }
 
     private void raiseMoney(int playerIndex, javax.swing.JTextField field) {

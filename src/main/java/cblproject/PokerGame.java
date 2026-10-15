@@ -21,7 +21,7 @@ public class PokerGame {
     int cardTurn = 0;
     int cardRiver = 0;
 
-    int roundcounter = 0;
+    int roundCounter = 0;
 
     
     public PokerGame(int amountOfPlayers, int moneyPerPlayer) {
@@ -40,7 +40,7 @@ public class PokerGame {
         this.cardFlopTwo = drawCard();
         this.cardFlopThree = drawCard();
         
-        this.roundcounter = 1;
+        this.roundCounter = 1;
     }
 
     public void dealAgain() {
@@ -79,7 +79,7 @@ public class PokerGame {
         for(int i = 0; i < deckOfCards.length; i++) {
             deckOfCards[i] = i + 1;
         }
-        this.roundcounter += 1;
+        this.roundCounter += 1;
     }
 
     public int drawCard() {
@@ -117,6 +117,10 @@ public class PokerGame {
         table[3] = this.cardTurn;
         table[4] = this.cardRiver;
         return table;
+    }
+
+    public int getRoundCounter() {
+        return roundCounter;
     }
 
     public void printCardDeck() {

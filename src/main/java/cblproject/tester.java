@@ -136,6 +136,7 @@ public class tester extends javax.swing.JFrame {
         call2.addActionListener(this::call2ActionPerformed);
 
         fold2.setText("Fold");
+        fold2.addActionListener(this::fold2ActionPerformed);
 
         quit.setText("quit");
         quit.addActionListener(this::quitActionPerformed);
@@ -459,8 +460,15 @@ public class tester extends javax.swing.JFrame {
     }//GEN-LAST:event_show_hidecards2ActionPerformed
 
     private void fold1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fold1ActionPerformed
+        game.winningPlayer(game.players[1]);
+        updateMoneyLabels();
         // TODO add your handling code here:
     }//GEN-LAST:event_fold1ActionPerformed
+
+    private void fold2ActionPerformed(java.awt.event.ActionEvent evt) {
+        game.winningPlayer(game.players[0]);
+        updateMoneyLabels();
+    }
 
     private void dealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealActionPerformed
         // TODO add your handling code here:

@@ -9,12 +9,16 @@ package cblproject;
  * @author piyus
  */
 public class tester extends javax.swing.JFrame {
+
+
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(tester.class.getName());
     
     private PokerGame game = new PokerGame(2, 100);
     private Cards cards = new Cards();
     private int stage = 0;
+    private int lastActionPerformed = -1;
+    private int lastRaise = 0;
 
     /**
      * Creates new form tester
@@ -33,6 +37,12 @@ public class tester extends javax.swing.JFrame {
         fold1.setVisible(false);
         raise1.setVisible(false);
         call1.setVisible(false);
+
+        raisemoney2.setVisible(false);
+        raise2.setVisible(false);
+        call2.setVisible(false);
+        fold2.setVisible(false);
+
         show_hidecards1.setVisible(false);
         show_hidecards2.setVisible(false);
         
@@ -110,6 +120,7 @@ public class tester extends javax.swing.JFrame {
         show_hidecards1.addActionListener(this::show_hidecards1ActionPerformed);
 
         call1.setText("Call");
+        call1.addActionListener(this::call1ActionPerformed);
 
         raise1.setText("Raise");
 
@@ -122,6 +133,7 @@ public class tester extends javax.swing.JFrame {
         raise2.setText("Raise");
 
         call2.setText("Call");
+        call2.addActionListener(this::call2ActionPerformed);
 
         fold2.setText("Fold");
 
@@ -337,7 +349,7 @@ public class tester extends javax.swing.JFrame {
 
     private void quitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitActionPerformed
         System.exit(0);
-// TODO add your handling code here:
+    // TODO add your handling code here:
     }//GEN-LAST:event_quitActionPerformed
 
     private void show_hidecards1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_hidecards1ActionPerformed
@@ -359,6 +371,72 @@ public class tester extends javax.swing.JFrame {
     private void Raise1moneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Raise1moneyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Raise1moneyActionPerformed
+
+    private void call1ActionPerformed(java.awt.event.ActionEvent evt) {
+        if (game.playerBet(game.players[0], lastRaise) != 0) {
+            return;
+        }
+        lastActionPerformed += 1;
+        lastRaise = 0;
+        updateMoneyLabels();
+
+        Raise1money.setVisible(false);
+        raise1.setVisible(false);
+        call1.setVisible(false);
+        fold1.setVisible(false);
+
+        raisemoney2.setVisible(true);
+        raise2.setVisible(true);
+        call2.setVisible(true);
+        fold2.setVisible(true);
+
+        if (lastActionPerformed == 1) {
+            Raise1money.setVisible(false);
+            raise1.setVisible(false);
+            call1.setVisible(false);
+            fold1.setVisible(false);
+
+            raisemoney2.setVisible(false);
+            raise2.setVisible(false);
+            call2.setVisible(false);
+            fold2.setVisible(false);
+
+            deal.setVisible(true);
+        }
+    }
+
+    private void call2ActionPerformed(java.awt.event.ActionEvent evt) {
+        if (game.playerBet(game.players[1], lastRaise) != 0) {
+            return;
+        }
+        lastActionPerformed += 1;
+        lastRaise = 0;
+        updateMoneyLabels();
+
+        Raise1money.setVisible(true);
+        raise1.setVisible(true);
+        call1.setVisible(true);
+        fold1.setVisible(true);
+
+        raisemoney2.setVisible(false);
+        raise2.setVisible(false);
+        call2.setVisible(false);
+        fold2.setVisible(false);
+
+        if (lastActionPerformed == 1) {
+            Raise1money.setVisible(false);
+            raise1.setVisible(false);
+            call1.setVisible(false);
+            fold1.setVisible(false);
+
+            raisemoney2.setVisible(false);
+            raise2.setVisible(false);
+            call2.setVisible(false);
+            fold2.setVisible(false);
+
+            deal.setVisible(true);
+        }
+    }
 
     private void show_hidecards2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_hidecards2ActionPerformed
         // TODO add your handling code here:
@@ -407,16 +485,33 @@ public class tester extends javax.swing.JFrame {
 
             deal.setVisible(false);
 
-
             game.playerBet(game.players[0], 5);
             game.playerBet(game.players[1], 5);
             updateMoneyLabels();
         } else if (stage == 1) {
             game.drawTurn();
             turncard.setText(cards.numtoCard(new int[]{game.showTable()[3]}));
+
+            Raise1money.setVisible(true);
+            raise1.setVisible(true);
+            call1.setVisible(true);
+            fold1.setVisible(true);
+            show_hidecards1.setVisible(true);
+            show_hidecards2.setVisible(true);
+
+            deal.setVisible(false);
         } else if (stage == 2) {
             game.drawRiver();
             rivercard.setText(cards.numtoCard(new int[]{game.showTable()[4]}));
+
+            Raise1money.setVisible(true);
+            raise1.setVisible(true);
+            call1.setVisible(true);
+            fold1.setVisible(true);
+            show_hidecards1.setVisible(true);
+            show_hidecards2.setVisible(true);
+
+            deal.setVisible(false);
         } else {
             return;
         }
@@ -437,11 +532,38 @@ public class tester extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "invalid input");
             return;
         }
-        if (amount <= 0 || game.playerBet(game.players[playerIndex], amount) != 0) {
+        if (amount <= 0 || game.playerBet(game.players[playerIndex], amount + this.lastRaise) != 0) {
             javax.swing.JOptionPane.showMessageDialog(this, "invalid input");
             return;
         }
+        lastRaise = amount;
+        lastActionPerformed = 0;
         updateMoneyLabels();
+
+        if (playerIndex == 0) {
+            Raise1money.setVisible(false);
+            raise1.setVisible(false);
+            call1.setVisible(false);
+            fold1.setVisible(false);
+
+            raisemoney2.setVisible(true);
+            raise2.setVisible(true);
+            call2.setVisible(true);
+            fold2.setVisible(true);
+        } else if (playerIndex == 1) {
+            Raise1money.setVisible(true);
+            raise1.setVisible(true);
+            call1.setVisible(true);
+            fold1.setVisible(true);
+
+            raisemoney2.setVisible(false);
+            raise2.setVisible(false);
+            call2.setVisible(false);
+            fold2.setVisible(false);
+        }
+
+        System.out.println(lastRaise);
+        System.out.println(lastActionPerformed);
     }
     /**
      * @param args the command line arguments

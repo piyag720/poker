@@ -541,9 +541,15 @@ public class tester extends javax.swing.JFrame {
         Winner winner = new Winner();
         winner.check(hand1, hand2, table);
 
+        
         if (winner.winnerPlayer == -2) {
             return;
         }
+        
+         card1.setVisible(true);
+        card2.setVisible(true);
+        card3.setVisible(true);
+        card4.setVisible(true);
 
         if (winner.winnerPlayer == -1) {
             javax.swing.JOptionPane.showMessageDialog(this, "Tie, both have " + winner.handName + ". The pot is split.");

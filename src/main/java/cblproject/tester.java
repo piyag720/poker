@@ -526,10 +526,37 @@ public class tester extends javax.swing.JFrame {
 
             deal.setVisible(false);
         } else {
+            showdown();
             return;
         }
+           
         stage++;
     }
+     
+      private void showdown() {
+        String[] hand1 = {card1.getText(), card2.getText()};
+        String[] hand2 = {card3.getText(), card4.getText()};
+        String[] table = {flopcard1.getText(), flopcard2.getText(), flopcard3.getText(), turncard.getText(), rivercard.getText()};
+
+        Winner winner = new Winner();
+        winner.check(hand1, hand2, table);
+
+        if (winner.winnerPlayer == -2) {
+            return;
+        }
+
+        if (winner.winnerPlayer == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Tie, both have " + winner.handName + ". The pot is split.");
+            int half = game.potMoney / 2;
+            game.players[0].changePlayerMoney(half);
+            game.players[1].changePlayerMoney(half);
+            game.potMoney = 0;
+            resetBoard(0);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Player " + (winner.winnerPlayer + 1) + " wins with " + winner.handName);
+            resetBoard(winner.winnerPlayer);
+        }
+      }
 
     private void updateMoneyLabels() {
         player1Money.setText("$" + game.players[0].money);

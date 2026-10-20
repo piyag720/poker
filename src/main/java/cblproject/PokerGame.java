@@ -13,7 +13,6 @@ import java.util.*;
  */
 public class PokerGame {
     int[] deckOfCards = new int[52];
-    int[] startingMoney;
     Player[] players;
     int potMoney = 0;
     int cardFlopOne = 0;

@@ -150,6 +150,7 @@ public class tester extends javax.swing.JFrame {
         call2.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
         call2.setForeground(new java.awt.Color(0, 51, 204));
         call2.setText("CALL");
+        call2.addActionListener(this::call2ActionPerformed);
 
         fold2.setBackground(new java.awt.Color(0, 0, 0));
         fold2.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
@@ -499,9 +500,6 @@ public class tester extends javax.swing.JFrame {
                 dealNextStage();
     }//GEN-LAST:event_dealActionPerformed
 
-    private void call1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_call1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_call1ActionPerformed
 
     
      private void dealNextStage() {
@@ -568,7 +566,7 @@ public class tester extends javax.swing.JFrame {
 
             deal.setVisible(false);
 
-            deal.setText("Show Winner");
+            deal.setText("SHOW WINNER");
         } else {
             showdown();
             return;

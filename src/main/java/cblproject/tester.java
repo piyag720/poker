@@ -109,8 +109,9 @@ public class tester extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
         jTextField1.setBackground(new java.awt.Color(0, 153, 153));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 51, 0));
-        jTextField1.setText("        POKER");
+        jTextField1.setText("POKER");
         jTextField1.setFocusable(false);
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
@@ -120,26 +121,45 @@ public class tester extends javax.swing.JFrame {
         show_hidecards1.setText("Show/Hide Cards");
         show_hidecards1.addActionListener(this::show_hidecards1ActionPerformed);
 
-        call1.setText("Call");
+        call1.setBackground(new java.awt.Color(51, 255, 255));
+        call1.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        call1.setForeground(new java.awt.Color(0, 102, 255));
+        call1.setText("CALL");
         call1.addActionListener(this::call1ActionPerformed);
 
-        raise1.setText("Raise");
+        raise1.setBackground(new java.awt.Color(255, 255, 0));
+        raise1.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        raise1.setForeground(new java.awt.Color(255, 102, 51));
+        raise1.setText("RAISE");
 
-        fold1.setText("Fold");
+        fold1.setBackground(new java.awt.Color(0, 0, 0));
+        fold1.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        fold1.setForeground(new java.awt.Color(255, 51, 51));
+        fold1.setText("FOLD");
         fold1.addActionListener(this::fold1ActionPerformed);
 
         show_hidecards2.setText("Show/hide Cards");
         show_hidecards2.addActionListener(this::show_hidecards2ActionPerformed);
 
-        raise2.setText("Raise");
+        raise2.setBackground(new java.awt.Color(255, 255, 0));
+        raise2.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        raise2.setForeground(new java.awt.Color(204, 102, 0));
+        raise2.setText("RAISE");
 
-        call2.setText("Call");
-        call2.addActionListener(this::call2ActionPerformed);
+        call2.setBackground(new java.awt.Color(0, 255, 255));
+        call2.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        call2.setForeground(new java.awt.Color(0, 51, 204));
+        call2.setText("CALL");
 
-        fold2.setText("Fold");
-        fold2.addActionListener(this::fold2ActionPerformed);
+        fold2.setBackground(new java.awt.Color(0, 0, 0));
+        fold2.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        fold2.setForeground(new java.awt.Color(204, 0, 0));
+        fold2.setText("FOLD");
 
-        quit.setText("quit");
+        quit.setBackground(new java.awt.Color(153, 0, 0));
+        quit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        quit.setForeground(new java.awt.Color(0, 0, 0));
+        quit.setText("QUIT");
         quit.addActionListener(this::quitActionPerformed);
 
         Raise1money.setText("Input Money");
@@ -182,6 +202,9 @@ public class tester extends javax.swing.JFrame {
         rivercard.setText("cardTable5");
         tablePanel.add(rivercard);
 
+        deal.setBackground(new java.awt.Color(255, 153, 0));
+        deal.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
+        deal.setForeground(new java.awt.Color(204, 204, 0));
         deal.setText("DEAL");
         deal.addActionListener(this::dealActionPerformed);
 
@@ -231,7 +254,7 @@ public class tester extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(jButton9)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(309, 309, 309)
                             .addComponent(quit)))
@@ -244,7 +267,7 @@ public class tester extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(deal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,7 +296,7 @@ public class tester extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(tablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(player2table, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -475,6 +498,10 @@ public class tester extends javax.swing.JFrame {
         // TODO add your handling code here:
                 dealNextStage();
     }//GEN-LAST:event_dealActionPerformed
+
+    private void call1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_call1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_call1ActionPerformed
 
     
      private void dealNextStage() {

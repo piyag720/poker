@@ -13,6 +13,7 @@ import java.util.*;
  */
 public class PokerGame {
     int[] deckOfCards = new int[52];
+    int[] startingMoney;
     Player[] players;
     int potMoney = 0;
     int cardFlopOne = 0;
@@ -21,6 +22,7 @@ public class PokerGame {
     int cardTurn = 0;
     int cardRiver = 0;
 
+    boolean forceCall = false;
     int roundCounter = 0;
 
     
@@ -54,8 +56,8 @@ public class PokerGame {
         this.cardFlopThree = drawCard();
     }
 
-    public void handValue(int cardOne, int cardTwo) {
-
+    public void forceCall(Player player) {
+        playerBet(player, player.money);
     }
 
     public int playerBet(Player player, int money) {

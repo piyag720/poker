@@ -17,7 +17,7 @@ public class tester extends javax.swing.JFrame {
     
     private PokerGame game = new PokerGame(2, secondscreen.getMoneySetting());
     private Cards cards = new Cards();
-    private int stage = 0;
+    private int stage = -1;
     private int lastActionPerformed = -1;
     private int lastRaise = 0;
 
@@ -376,7 +376,7 @@ public class tester extends javax.swing.JFrame {
 
     private void call1ActionPerformed(java.awt.event.ActionEvent evt) {
         if (game.playerBet(game.players[0], lastRaise) != 0) {
-            return;
+            game.forceCall(game.players[0]);
         }
         lastActionPerformed += 1;
         lastRaise = 0;
@@ -411,7 +411,7 @@ public class tester extends javax.swing.JFrame {
 
     private void call2ActionPerformed(java.awt.event.ActionEvent evt) {
         if (game.playerBet(game.players[1], lastRaise) != 0) {
-            return;
+            game.forceCall(game.players[1]);
         }
         lastActionPerformed += 1;
         lastRaise = 0;
@@ -478,14 +478,31 @@ public class tester extends javax.swing.JFrame {
 
     
      private void dealNextStage() {
-        if (stage == 0) {
+        if (stage == -1) {
             int[] handOne = game.showCards(0);
             int[] handTwo = game.showCards(1);
-            int[] table = game.showTable();
+
             card1.setText(cards.numtoCard(new int[]{handOne[0]}));
             card2.setText(cards.numtoCard(new int[]{handOne[1]}));
             card3.setText(cards.numtoCard(new int[]{handTwo[0]}));
             card4.setText(cards.numtoCard(new int[]{handTwo[1]}));
+            
+            Raise1money.setVisible(true);
+            raise1.setVisible(true);
+            call1.setVisible(true);
+            fold1.setVisible(true);
+            show_hidecards1.setVisible(true);
+            show_hidecards2.setVisible(true);
+
+            deal.setVisible(false);
+
+            game.playerBet(game.players[0], secondscreen.getBigBlindSetting());
+            game.playerBet(game.players[1], secondscreen.getBigBlindSetting());
+
+            updateMoneyLabels();
+
+        } else if (stage == 0) {
+            int[] table = game.showTable();
             flopcard1.setText(cards.numtoCard(new int[]{table[0]}));
             flopcard2.setText(cards.numtoCard(new int[]{table[1]}));
             flopcard3.setText(cards.numtoCard(new int[]{table[2]}));
@@ -498,8 +515,6 @@ public class tester extends javax.swing.JFrame {
 
             deal.setVisible(false);
 
-            game.playerBet(game.players[0], secondscreen.getBigBlindSetting());
-            game.playerBet(game.players[1], secondscreen.getBigBlindSetting());
             updateMoneyLabels();
         } else if (stage == 1) {
             game.drawTurn();
@@ -525,6 +540,8 @@ public class tester extends javax.swing.JFrame {
             show_hidecards2.setVisible(true);
 
             deal.setVisible(false);
+
+            deal.setText("Show Winner");
         } else {
             showdown();
             return;
@@ -558,9 +575,11 @@ public class tester extends javax.swing.JFrame {
             game.players[1].changePlayerMoney(half);
             game.potMoney = 0;
             resetBoard(0);
+            deal.setText("DEAL");
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Player " + (winner.winnerPlayer + 1) + " wins with " + winner.handName);
             resetBoard(winner.winnerPlayer);
+            deal.setText("DEAL");
         }
       }
 
@@ -601,7 +620,7 @@ public class tester extends javax.swing.JFrame {
 
         deal.setVisible(true);
 
-        stage = 0;
+        stage = -1;
         lastActionPerformed = -1;
         lastRaise = 0;
 

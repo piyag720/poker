@@ -399,7 +399,11 @@ public class tester extends javax.swing.JFrame {
     }//GEN-LAST:event_Raise1moneyActionPerformed
 
     private void call1ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (game.playerBet(game.players[0], lastRaise) != 0) {
+        
+          if(game.players[0].money < lastRaise) {
+            game.potMoney -= lastRaise;
+            game.players[1].money +=lastRaise;
+        } else if (game.playerBet(game.players[0], lastRaise) != 0) {
             game.forceCall(game.players[0]);
         }
         lastActionPerformed += 1;
@@ -431,10 +435,15 @@ public class tester extends javax.swing.JFrame {
 
             lastActionPerformed = -1;
         }
+       
+        
     }
 
     private void call2ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (game.playerBet(game.players[1], lastRaise) != 0) {
+         if(game.players[1].money < lastRaise) {
+            game.potMoney -= lastRaise;
+            game.players[0].money +=lastRaise;
+        } else if (game.playerBet(game.players[1], lastRaise) != 0) {
             game.forceCall(game.players[1]);
         }
         lastActionPerformed += 1;
@@ -466,6 +475,8 @@ public class tester extends javax.swing.JFrame {
 
             lastActionPerformed = -1;
         }
+        
+       
     }
 
     private void show_hidecards2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_hidecards2ActionPerformed
@@ -507,7 +518,7 @@ public class tester extends javax.swing.JFrame {
             int[] handOne = game.showCards(0);
             int[] handTwo = game.showCards(1);
 
-            card1.setText(cards.numtoCard(new int[]{handOne[0]}));
+            card1.setText(cards.numtoCard(new int[]{handOne[0]})); 
             card2.setText(cards.numtoCard(new int[]{handOne[1]}));
             card3.setText(cards.numtoCard(new int[]{handTwo[0]}));
             card4.setText(cards.numtoCard(new int[]{handTwo[1]}));
@@ -520,11 +531,21 @@ public class tester extends javax.swing.JFrame {
             show_hidecards2.setVisible(true);
 
             deal.setVisible(false);
+            
+            
 
+        if(game.players[0].money > secondscreen.getBigBlindSetting() && game.players[1].money > secondscreen.getBigBlindSetting()) {
             game.playerBet(game.players[0], secondscreen.getBigBlindSetting());
             game.playerBet(game.players[1], secondscreen.getBigBlindSetting());
 
             updateMoneyLabels();
+        } else if(game.players[0].money < secondscreen.getBigBlindSetting() && game.players[1].money > secondscreen.getBigBlindSetting()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Player 1 has no money, Player 2 wins.");
+        } else if (game.players[1].money < secondscreen.getBigBlindSetting() && game.players[0].money > secondscreen.getBigBlindSetting()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Player 2 has no money, Player 1 wins.");
+        } else {
+            
+        }
 
         } else if (stage == 0) {
             int[] table = game.showTable();

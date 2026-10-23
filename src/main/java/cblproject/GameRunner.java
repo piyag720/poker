@@ -1,3 +1,4 @@
+package cblproject;
 import java.util.Scanner;
 
 import cblproject.PokerGame;
